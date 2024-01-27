@@ -1,0 +1,23 @@
+﻿@model CadastroDespesaModel
+@{
+    ViewData["Title"] = "Cadastro de Despesas";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Aqui estão suas despesas!</p>
+
+<form method="post">
+    <div>
+        <label asp-for="Despesa.Descricao">Descrição:</label>
+        <input asp-for="Despesa.Descricao" />
+        <span asp-validation-for="Despesa.Descricao"></span>
+    </div>
+
+    <div>
+        <label asp-for="Despesa.Valor">Valor:</label>
+        <input asp-for="Despesa.Valor" />
+        <span asp-validation-for="Despesa.Valor"></span>
+    </div>
+
+    <button type="submit">Cadastrar Despesa</button>
+</form>

@@ -2,11 +2,11 @@
 
 namespace EasyFinance.Controllers
 {
-    public class User : Controller
+    public class DespesasController : Controller
     {
         public IActionResult Index()
         {
-            return View(User);
+            return View("Despesas");
         }
     }
 }
