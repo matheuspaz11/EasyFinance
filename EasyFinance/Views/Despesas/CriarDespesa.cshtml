@@ -1,0 +1,54 @@
+﻿@using static Platform.Enum.Enum
+@model DespesaModel;
+
+@{
+    ViewData["Title"] = "Cadastro de Despesa";
+    var types = Enum.GetValues(typeof(TipoDespesa)).Cast<TipoDespesa>();
+    var status = Enum.GetValues(typeof(StatusDespesa)).Cast<StatusDespesa>();
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="">Cadastro de Despesa</h3>
+    </div>
+</div>
+
+<form class="row" asp-controller="Despesas" asp-action="SalvarDespesa" method="post">
+    <div class="col-md-12">
+        <label for="textareaDescription" class="form-label">Descrição</label>
+        <input type="text" asp-for="Descricao" class="form-control" id="textareaDescription" placeholder="Digite a descrição da despesa">
+    </div>
+    <div class="col-md-4">
+        <label for="inputValue" class="form-label">Valor</label>
+        <input type="number" asp-for="Valor" class="form-control" id="inputValue" placeholder="Digite o valor da despesa">
+    </div>
+    <div class="col-md-4">
+        <label for="type" class="form-label">Tipo</label>
+        <div class="col-md-12">
+            <select class="form-control" id="Type" name="Type">
+                <option value="">Selecione</option>
+                @foreach (var type in types)
+                {
+                    <option value="@type">@type</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="status" class="form-label">Status</label>
+        <div class="col-md-12">
+            <select class="form-control" id="Status" name="Status">
+                <option value="">Selecione</option>
+                @foreach (var stts in status)
+                {
+                    <option value="@stts">@stts</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="col-12 mt-4">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <a class="btn btn-secondary" asp-controller="Despesas" asp-action="Index" role="button">Voltar</a>
+    </div>
+</form>
